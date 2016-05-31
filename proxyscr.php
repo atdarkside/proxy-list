@@ -1,6 +1,6 @@
 <?
     unlink("proxy.txt");
-    $url = "**********************";
+    $url = "https://www.sslproxies.org";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -8,10 +8,9 @@
     $start = mb_strpos($html,"<tbody>") + 7;
     $end = mb_strpos($html,"</tbody>");
     $str1 = mb_substr($html,$start,$end - $start);
-    $vowels = array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","<",">");
+    $vowels = array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","<",">"," ");
     $str2 = str_replace($vowels, "", "$str1");
     $str2 = str_replace("/",":","$str2");
-    $str2 = str_replace(" ","","$str2");
     $str3 = explode("\n", $str2);
     $cnt = count($str3);
     $file = fopen("proxy.txt","a");
